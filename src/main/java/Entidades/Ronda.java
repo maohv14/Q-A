@@ -54,14 +54,15 @@ public class Ronda extends Pregunta{
         int acumulado = getPuntos();
         acumulado += 10;
         setPuntos(acumulado);
-        //puntosaCero();
+
     }
 
+    // El puntaje se vuelve cero
     public void puntosaCero(){
         setPuntos(0);
     }
 
-    //Vamos a generar un Numero aleatorio
+    //Generar un Numero aleatorio
     public int generarNumeroAleatorio(){
         int numeroAleatorio = (int)(Math.random()*4+0);
         return numeroAleatorio;
@@ -76,33 +77,32 @@ public class Ronda extends Pregunta{
         setSi_No(scanner.nextInt());
     }
 
-    //Puntos por dinero
+    //Convertir puntos en dinero
     public void puntosPorDinero(Jugador jugador){
         int dinero;
         dinero = getPuntos() * 100000;
         jugador.setDineroAcumulado(dinero);
     }
 
-    //Finalizar el juego
+    //Terminar el juego
     public void finJuego(){
         System.out.println("Juego terminado");
     }
 
-    //Metodo para renderizar que ganaste
+
     public void ganador(){
         System.out.println("Has acumulado un monto de: "+ getPuntos()+ " Puntos");
     }
 
-    //Metodo renderizar salida a voluntad del juego
+    //Salida voluntaria del juego
     public void retirada(){System.out.println("Buena descesion, te llevas un total de "+ getPuntos()+ " Puntos");
     }
 
-    //Metodo para simplificar la logica de los rounds 1, 2, 3
+    //Logica de las las 3 primeras rodas
     public void rondaLogica(ArrayList<Pregunta> arrayList){
         if(getrCorrecta() == 1 && getSi_No() == 1){
             hacerPregunta(arrayList.get(generarNumeroAleatorio()));
             if (getrCorrecta() == 1){
-                //sumarPuntos();
                 continuarSi_No();
                 if (getrCorrecta() == 1 && getSi_No() == 2){
                     retirada();
@@ -110,14 +110,13 @@ public class Ronda extends Pregunta{
             }
         }else {
             if(getrCorrecta() == 0){
-                //puntosaCero();
                 finJuego();
                 setrCorrecta(0);
             }
         }
     }
 
-    //Primera ronda
+
     public void primeraRonda(ArrayList<Pregunta> preguntamFacil){
         hacerPregunta(preguntamFacil.get(generarNumeroAleatorio()));
         if (getrCorrecta() == 1){
@@ -130,7 +129,6 @@ public class Ronda extends Pregunta{
                 setrCorrecta(0);
                 finJuego();
             }
-            //puntosaCero();
         }
     }
 
@@ -146,7 +144,7 @@ public class Ronda extends Pregunta{
         rondaLogica(preguntaDificil);
     }
 
-    //Round 5
+    //Ultima ronda
     public void quintaRonda (ArrayList<Pregunta> preguntaExperto){
         if(getrCorrecta() == 1 && getSi_No() == 1){
             hacerPregunta(preguntaExperto.get(generarNumeroAleatorio()));

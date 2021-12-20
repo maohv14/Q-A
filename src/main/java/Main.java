@@ -49,6 +49,7 @@ public class Main {
         Pregunta  pregunta25 = new Pregunta(25 , "Se vende un artículo con una ganancia del 15% sobre el precio del costo. Si se ha comprado en $80. Hallar el precio total de la venta.", "Razonamiento matemático", "c", "A. $95", "B. $90", "C. $92", "D. $91");
 
         //Se asigna arreglo de cada grupo de preguntas por categoria, muy facil/ facil /moderado/dificil/experto
+
         ArrayList<Pregunta> preguntamFacil = new ArrayList<Pregunta>();
         preguntamFacil.add(0, pregunta1);
         preguntamFacil.add(1, pregunta2);
@@ -87,6 +88,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Jugador jugador = new Jugador();
         Ronda ronda = new Ronda();
+
+        // Iniciar el Juego
 
         System.out.println("****************************************");
         System.out.println("************JUEGO DE PREGUNTAS**********");
